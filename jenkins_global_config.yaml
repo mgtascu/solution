@@ -1,0 +1,176 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - string:
+          description: "token for github"
+          id: "12a3755e-146b-4af9-aa3e-d8e85f3a4053"
+          scope: GLOBAL
+          secret: "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"
+      - usernamePassword:
+          description: "repo_credentials"
+          id: "09cd3cb8-6b3f-4b5c-bb4f-75bfce1359a9"
+          password: "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"
+          scope: GLOBAL
+          username: "someuser"
+          usernameSecret: false
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  labelAtoms:
+  - name: "built-in"
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  noUsageStatistics: true
+  numExecutors: 2
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "admin"
+        name: "admin"
+        properties:
+        - "apiToken"
+        - "mailer"
+        - preferredProvider:
+            providerId: "default"
+      - id: "user"
+        name: "user"
+        password: "userpass"
+        properties:
+        - "apiToken"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - mailer:
+            emailAddress: "user@domain.com"
+  slaveAgentPort: -1
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - all:
+      name: "all"
+  viewsTabBar: "standard"
+globalCredentialsConfiguration:
+  configuration:
+    providerFilter: "none"
+    typeFilter: "none"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: true
+  sSHD:
+    port: -1
+  scriptApproval:
+    approvedScriptHashes:
+    - "040d668ecdf4b30ccb9c3daf3ed7d4e43a33d836"
+    - "09f3e25e6f576168b1e41526637a922e5d16ca29"
+    - "0e5f07c3dfdb7a7fd804676f3ec3eb6da6dbf7a5"
+    - "1ddbfbde90634d323efede521bc431eac4277ebf"
+    - "2278365c048deb2c66fdd0a2852ba57e0aaa3be7"
+    - "3a35dd3a472ecf0bc7b3bfa6947e8996809158d8"
+    - "45f8a9af2f1104a7774a51e2e05e12d14e8f04ef"
+    - "51835820c200253523fddcc4d3b1e84f610c2097"
+    - "53cf3ad402687bac8159390a21383550d103c73b"
+    - "54c822b0d8329db6cdfeba9d1a747bc1f49f1fde"
+    - "6827b98f1b19b8737585980e98415a1f7bb3449f"
+    - "6f70434782c22f88f65d6a64e963c37ce71b6acc"
+    - "73c583cc4f38d50e3bbca9faccf4b448a33153e6"
+    - "76434ef4bf6e4797d2c2b434db673fd59bf8e788"
+    - "7bbddf21b4d43857a11cebb4ef5bbcbc5d3d212a"
+    - "7e7618531f948af252f586030a869c3345ec550b"
+    - "7ebf88eafb9dfbdcbf60e987217d53af538189a6"
+    - "80fde91af9bfa9b447b4343b965ed4860dd59094"
+    - "83ec72dc254c321674f3813bc30fc13646166b57"
+    - "9bbbb23615c882409e966fa948509617a57efd91"
+    - "a10a28033ab14680f6299d71c87f98f75e1c4283"
+    - "b4f743db26c72d3a8d62ff2d9a001ecee5525b09"
+    - "b62513d001a256ee2691c20ea8b2eb4b079eec49"
+    - "b9b4e41a4242d9cc41d199b135a757a5767de142"
+    - "c1a52e4a7461195fa034bd9cd02d9c60c1838f81"
+    - "c347cf26d75fe6c8881e8755e8eec333a0493ea4"
+    - "c40212f165c0ab5802d42aaf88561965382cdfa6"
+    - "cae1fc39cca77b82fef803bb3cd92c31cf908417"
+    - "cded4c029ac245790f404113800a5f03a732f1bd"
+    - "d24c8b59ab9bef24a79db201d00780c390d20bfd"
+    - "d500b172a175abe6a60bca06305f2b7bbd026708"
+    - "dbd5b8fd12868c66145f39080f5da41ee0fbd8ad"
+    - "e05242d7986a2bc8a76f1672ed15d31aaf1ed0b0"
+    - "ea28211bc894fd7ee47fed3a8b814fd2be7c45f5"
+    - "eef07ee83bf32d3e1f851d79eec1a30722aaaddc"
+    - "f4440120f22c1b9aec6b2c0d07dcd8dd98a0ebba"
+    - "f4e95888f719560dbeed03e55844fb520f277380"
+    - "f8899b5c1262888fbf5f48d2dae47f8e8549d568"
+unclassified:
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  buildStepOperation:
+    enabled: false
+  fingerprints:
+    fingerprintCleanupDisabled: false
+    storage: "file"
+  gitHubConfiguration:
+    apiRateLimitChecker: ThrottleOnOver
+  gitHubPluginConfig:
+    configs:
+    - credentialsId: "12a3755e-146b-4af9-aa3e-d8e85f3a4053"
+      name: "git"
+    hookUrl: "${JENKINS_HOST}/github-webhook/"
+  gitSCM:
+    addGitTagAction: false
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
+  githubPullRequests:
+    actualiseOnFactory: false
+  junitTestResultStorage:
+    storage: "file"
+  location:
+    adminAddress: "address not configured yet <nobody@nowhere>"
+    url: "${JENKINS_HOST}"
+  mailer:
+    charset: "UTF-8"
+    useSsl: false
+    useTls: false
+  pollSCM:
+    pollingThreadCount: 10
+  timestamper:
+    allPipelines: false
+    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
+    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
