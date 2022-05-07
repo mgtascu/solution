@@ -1,12 +1,13 @@
 
 resource aws_instance "jenkins_server" {
+    depends_on = [ aws_key_pair.jenkins_key_pair, aws_security_group.jenkins_sg ]
     ami = var.jenkins_ami
     instance_type = "t3.medium"
     key_name = var.jekins_ssh_key_name
 
     security_groups = [ aws_security_group.jenkins_sg.name]
     tags = merge(var.tags, {
-        Name: "jenkins_server_2"
+        Name: "jenkins_server"
     })
 
     root_block_device {
@@ -23,19 +24,13 @@ resource aws_instance "jenkins_server" {
     }
 
     provisioner "file" {
-        source = "../scripts/install_jenkins_on_docker.sh"
-        destination = "/tmp/install_jenkins_on_docker.sh"
+        source = "../payload"
+        destination = "/tmp"
     }
-
-    provisioner "file" {
-        source = "../docker/Dockerfile"
-        destination = "/tmp/Dockerfile"
-    }
-
     provisioner "remote-exec" {
         inline = [
-            "chmod +x /tmp/install_jenkins_on_docker.sh",
-            "sudo sh /tmp/install_jenkins_on_docker.sh | tee /tmp/install_jenkins_on_docker.log"
+            "chmod +x /tmp/payload/install_jenkins_on_docker.sh",
+            "sudo sh /tmp/payload/install_jenkins_on_docker.sh | tee /tmp/payload/install_jenkins_on_docker.log"
         ]
     }
 }

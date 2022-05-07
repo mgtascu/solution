@@ -6,11 +6,11 @@ credentials:
           description: "token for github"
           id: "12a3755e-146b-4af9-aa3e-d8e85f3a4053"
           scope: GLOBAL
-          secret: "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"
+          secret: "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"
       - usernamePassword:
           description: "repo_credentials"
           id: "09cd3cb8-6b3f-4b5c-bb4f-75bfce1359a9"
-          password: "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"
+          password: "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"
           scope: GLOBAL
           username: "someuser"
           usernameSecret: false
