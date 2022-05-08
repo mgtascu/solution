@@ -10,7 +10,7 @@ variable "jenkins_ami" {
 }
 
 variable "jekins_ssh_key_name" {
-  default = "jenkins_ssh_access_key2"
+  default = "jenkins_ssh_access_key"
 }
 
 variable "tags" {
@@ -30,7 +30,7 @@ variable "storage_type" {
 }
 
 variable "security_group_name" {
-  default = "jenkins_sg2"
+  default = "jenkins_sg"
 }
 
 variable "github_token" {
