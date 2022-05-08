@@ -1,5 +1,6 @@
 #!/bin/bash
-
+TOKEN="$1"
+echo "Token : ${TOKEN}"
 echo "Preparing Jenkins installation"
 yum -y install epel-release
 yum -y install wget git zip unzip yum-utils
@@ -23,4 +24,4 @@ set -x
 cd /tmp/payload || exit 2
 docker build -t custom_jenkins:1.0 .
 mkdir -p /var/jenkins_home/workspace/
-docker run -d -e JENKINS_HOST="http://${HOSTNAME}:8080" -v /var/run/docker.sock:/var/run/docker.sock -v /var/jenkins_home/workspace:/var/jenkins_home/workspace -p 8080:8080 custom_jenkins:1.0
+docker run -d -e JENKINS_HOST="http://${HOSTNAME}:8080" -e GITHUB_TOKEN=$TOKEN -v /var/run/docker.sock:/var/run/docker.sock -v /var/jenkins_home/workspace:/var/jenkins_home/workspace -p 8080:8080 custom_jenkins:1.0

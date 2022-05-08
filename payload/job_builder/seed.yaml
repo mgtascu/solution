@@ -1,0 +1,11 @@
+- job:
+    name: seed
+    project-type: freestyle
+    scm:
+      - git:
+          url: https://github.com/mgtascu/solution.git
+          branches:
+            - origin/main
+    builders:
+      - dsl:
+          targets: "payload/job_builder/guava_build_pipeline.groovy"

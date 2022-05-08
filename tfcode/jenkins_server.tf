@@ -30,7 +30,7 @@ resource aws_instance "jenkins_server" {
     provisioner "remote-exec" {
         inline = [
             "chmod +x /tmp/payload/install_jenkins_on_docker.sh",
-            "sudo sh /tmp/payload/install_jenkins_on_docker.sh | tee /tmp/payload/install_jenkins_on_docker.log"
+            "sudo sh /tmp/payload/install_jenkins_on_docker.sh ${var.github_token}| tee /tmp/payload/install_jenkins_on_docker.log"
         ]
     }
 }

@@ -31,3 +31,7 @@ variable "security_group_name" {
   default = "jenkins_sg2"
 }
 
+variable "github_token" {
+  type = string
+}
+
