@@ -1,6 +1,6 @@
 
 def buildTag = "latest" 
-def buildImage = "public.ecr.aws/w5d4s7o0/guava-build:${buildTag}"
+def buildImage = "maven:${buildTag}"
 def buildCmd = "mvn clean package -pl '!guava-gwt' -DargLine='-Xmx1024m' -DskipTests=true"
 
 
