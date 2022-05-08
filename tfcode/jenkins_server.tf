@@ -19,7 +19,7 @@ resource aws_instance "jenkins_server" {
         type = "ssh"
         user = "centos"
         private_key = file("${var.jekins_ssh_key_name}.pem")
-        host = self.private_ip
+        host = self.public_ip
         timeout = "10m"
     }
 
