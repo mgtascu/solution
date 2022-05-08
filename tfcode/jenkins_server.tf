@@ -2,7 +2,7 @@
 resource aws_instance "jenkins_server" {
     depends_on = [ aws_key_pair.jenkins_key_pair, aws_security_group.jenkins_sg ]
     ami = var.jenkins_ami
-    instance_type = "t3.medium"
+    instance_type = var.instance_type
     key_name = var.jekins_ssh_key_name
 
     security_groups = [ aws_security_group.jenkins_sg.name]

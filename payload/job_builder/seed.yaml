@@ -8,4 +8,4 @@
             - origin/main
     builders:
       - dsl:
-          targets: "payload/job_builder/guava_build_pipeline.groovy"
+          targets: "payload/guava_build_pipeline.groovy"

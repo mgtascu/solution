@@ -19,7 +19,9 @@ variable "tags" {
     "Scope": "Managed by Terraform"
   }
 }
-
+variable "instance_type" {
+  default = "t3.medium"
+}
 variable "storage_size" {
   default = "20"
 }
