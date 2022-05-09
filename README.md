@@ -30,8 +30,12 @@ Assuming there is an AWS account available, here is a list of requirements to ru
 *  An environment with `awscli` and `terraform` installed.
     While developing the solution, I used the a `t2.micro AWS EC2 instance` running Amazon Linux 2 and the following tool versions.
     > aws-cli/1.18.147 Python/2.7.18 Linux/5.10.109-104.500.amzn2.x86_64 botocore/1.18.6
+    > or
+    > aws-cli/2.2.31 Python/3.8.8 Darwin/21.4.0 exe/x86_64 prompt/off
     >
     > Terraform v1.1.9
+
+* Subscribe to the [AWS Marketplace Centos AMI](https://aws.amazon.com/marketplace/pp/prodview-qkzypm3vjr45g), if you haven't already. The terraform apply command will require this step and fail otherwise.
 
 * The `awscli` must be configured with the credentials of an IAM user with the proper access to create and delete the required infra(sg, key pairs and instances, in ec2). To achieve this, run `aws configure` and input your user details.
     > AWS Access Key ID []: _<your_user_access_key_id>_
@@ -178,8 +182,6 @@ Considering the GitHub branching strategy and the matrix of configuration, we ha
 
 
 For the CD side of the pipeline there isn't much to do, since the `guava` project is a core library for java. However, assuming we have an automated way to deploy and validate one or more use cases of this project, we can extend the CI and Release pipelines to include this part before promoting an artifact.
-
-
 ## Considerations
 When implementing a production environment, a major consideration goes to the security factor. In order to address the security concerns about the infrastructure, we can apply AWSs best practices. 
 The access to the builds can be role-based controlled by leveraging Jenkins plugins and the access to the Jenkins server can be restricted to allow only connections via a dedicated VPN.
@@ -191,3 +193,9 @@ When building artifacts, versioning plays an important role in organizing and or
 ## An easier alternative
 Many features can boil down to having the required resources at a point in time. Using a cutting-edge tech stack sometimes introduce complexity and can delay things in a time of need. 
 If time is of the essence when building a production environment like this one, a fixed infrastructure can be deployed using on-demand or reserved instances. The Jenkins server will be hosted on a node by itself and a couple of other instances will be connected to the master as permanent nodes. With containerized builds, the pipeline side won't change much form the initial approach and the solution is still robust, but things like high availability, scalability and cost optimization will be traded off.
+
+## Introducing XCode build (ex. 3)
+
+To integrate an iOS build in our Jenkins server we need to enable it to build on iOS using `XCode tools`. After some research, it looks like there is a Jenkins plugin to handle `XCode` or we can run the commands from shell directly if we need to avoid using this plugin. On the system side, we need a server running `macOS` to connect is as a permanent node to our Jenkins server. 
+
+The pipeline will run on this node only(at least for the build part) and have the same set of jobs associated. The artifacts can be pushed to our artifact repository manager and then consumed in the other project. If there is a dependency to build the `XCode` project every time before running a build, we can setup a project dependency relationship using a Jenkins plugin or api calls.
