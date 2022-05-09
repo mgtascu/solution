@@ -23,7 +23,7 @@ The Jenkins web-server is running inside a docker container, making it fast to i
 
 The GitHub status checks are easy to install through the UI and for the purpose of this exercise I did so. However, there is are ways to automatically set them up, by making use of the graphql calls to the github's api, or by using terraform's github provider 
 
-_Note: to run the solution as smoothly as possible, the configurabillity of the execution is reduced considerably, aiming to lessen the data needed._
+_Note: to run the solution as smoothly as possible, the configurability of the execution is reduced considerably, aiming to lessen the data needed._
 
 # Prerequisites
 Assuming there is an AWS account available, here is a list of requirements to run the solution.
@@ -54,6 +54,8 @@ Assuming there is an AWS account available, here is a list of requirements to ru
 In this section we go through a series of steps to successfully run the solution.
 
 To create and execute a simple build pipeline for the `guava` repository, firstly we need an environment with this capability. We will be using `terraform` to provision a _landing zone_, composed of a `security group`, a `ssh key pair` and an `EC2 t3.medium` instance.
+
+__Note: A github token with minimal access was created for this exercise. For security reasons, it cannot be pushed to the remote repository. Please find it in the `demo_token.txt` attached file.__
 ## Creating the landing zone
 * Change the working directory to `tfcode`
     > `cd /tmp/solution/tfcode`
